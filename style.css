@@ -476,3 +476,72 @@ footer ul li a{
       gap: 1rem;  
     }
 }
+
+
+@media(max-width:400px){
+#menu-icon{
+    position: absolute; /* Use absolute positioning */
+    left: 50%; /* Move it to the center horizontally */
+    transform: translateX(-50%);
+}
+    .nav-links{
+    position: absolute;
+    top: 100%;
+    margin-top: 1rem;
+    width: 50%;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 3rem;
+    display: none;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
+    header{
+        padding: 1rem 5rem;
+        gap: 8rem;
+    }
+    header .logo{
+        font-size: 1rem;
+        width: 10%;
+        gap: 1rem;
+        right: 10;
+        font-size: .7rem;
+    }
+    .logo{
+        left: 8rem;
+        position: relative;
+    }
+    .about-container img{
+        width: 80vw;
+    }
+    .section-title{
+        font-size: 2rem;
+    }
+    .input-box input{
+        padding: 0.5rem 3rem;
+        width: 80%;
+        font-size: 1.5rem;
+    }
+    .input-box input::placeholder{
+        font-size: 1.5rem;
+    }
+    footer ul{
+      gap: 1rem;  
+    }
+}
