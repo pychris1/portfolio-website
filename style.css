@@ -430,7 +430,7 @@ footer ul li a{
     position: absolute;
     top: 100%;
     margin-top: 1rem;
-    width: 100%;
+    width: 65%;
     padding: 1rem;
     color: white;
     display: flex;
@@ -459,7 +459,7 @@ footer ul li a{
         gap: 8rem;
     }
     header .logo{
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .about-container img{
         width: 80vw;
@@ -478,7 +478,7 @@ footer ul li a{
 }
 
 
-@media(max-width:400px){
+@media(max-width:500px){
 #menu-icon{
     position: absolute; /* Use absolute positioning */
     left: 50%; /* Move it to the center horizontally */
@@ -513,14 +513,14 @@ footer ul li a{
         display: block;
     }
     header{
-        padding: 1rem 5rem;
+        padding: 2rem 5rem;
         gap: 8rem;
     }
     header .logo{
         font-size: 1rem;
         width: 10%;
         gap: 1rem;
-        right: 10;
+        right: 300vh;
         font-size: .7rem;
     }
     .logo{
