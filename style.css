@@ -429,3 +429,121 @@ span {
     font-size: 14px; /* Default font size for error */
     text-align: center;
 }
+
+
+
+/* Responsive Design - Adjustments for Mobile */
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 55%;
+    }
+
+    .header {
+        padding: 2rem 5%;
+    }
+
+    section {
+        padding: 8rem 5% 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
+
+    /* Navbar for mobile */
+    .navbar {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .navbar a {
+        margin: 1.5rem 0;
+    }
+
+    /* Show menu icon */
+    #menu-icon {
+        display: block;
+    }
+
+    /* Adjust home section */
+    .home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home-content h1 {
+        font-size: 4.5rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 45%;
+    }
+
+    .header {
+        padding: 1.5rem 5%;
+    }
+
+    .home-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .home-content h3 {
+        font-size: 2rem;
+    }
+}
+
+/* Responsive Fix */
+@media screen and (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust grid for smaller screens */
+    }
+
+    .portfolio-layer h4 {
+        font-size: 4rem;
+    }
+
+    .portfolio-layer p {
+        font-size: 4rem;
+    }
+    .portfolio-layer {
+        transition: none !important; /* Disable animations */
+        transform: none !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .portfolio-container {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+
+    .portfolio-layer h4 {
+        font-size: 4rem;
+    }
+
+    .portfolio-layer p {
+        font-size: 4rem;
+    }
+    .portfolio-layer {
+        transition: none !important; /* Disable animations */
+        transform: none !important;
+    }
+}
