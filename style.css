@@ -547,3 +547,211 @@ span {
         transform: none !important;
     }
 }
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Chatbot Container */
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Chat Icon (Collapsed) */
+#chat-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #4CAF50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 26px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+#chat-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Chatbox Container */
+#chatbox-container {
+    width: 350px;
+    height: 450px;
+    background: #181818;
+    border-radius: 10px;
+    border: 1px solid #4CAF50;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97), opacity 0.3s ease-in-out;
+}
+
+/* Chatbox Header */
+#chatbox-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #222;
+    border-radius: 5px 5px 0 0;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    color: #4CAF50; /* Green title */
+}
+
+/* Close Button */
+#close-chat {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: white;
+    cursor: pointer;
+}
+
+#close-chat:hover {
+    color: #4CAF50;
+}
+
+/* Chat Messages */
+#chatbox {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 350px;
+    padding: 10px;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Speech Bubble Styling */
+.user-message, .bot-message {
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 5px;
+    word-wrap: break-word;
+    font-size: 16px;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #4CAF50;
+    color: white;
+    border-bottom-right-radius: 0;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: #333;
+    color: white;
+    border-bottom-left-radius: 0;
+}
+
+.thinking-bubble {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    margin: 5px;
+    background: #e0e0e0;
+    border-radius: 20px;
+    width: 50px;
+}
+
+.thinking-bubble span {
+    width: 8px;
+    height: 8px;
+    background-color: #555;
+    border-radius: 50%;
+    animation: thinkingAnimation 1.5s infinite ease-in-out;
+}
+
+.thinking-bubble span:nth-child(1) {
+    animation-delay: 0s;
+}
+.thinking-bubble span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.thinking-bubble span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes thinkingAnimation {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.3;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* User Input Field */
+#user-input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    border-color: #66ff66;
+}
+
+/* Send Button */
+#send-button {
+    background: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+    display: block;  /* Makes it take full width */
+    margin: 0 auto; /* Centers the button */
+    text-align: center;
+}
+
+/* Hover and Active Effects */
+#send-button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
+}
+
+#send-button:active {
+    transform: scale(0.95);
+    background: #3e8e41;
+}
+

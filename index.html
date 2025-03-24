@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="fuse.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Portfolio | chriscodez.com</title>
 </head>
@@ -31,7 +33,7 @@
             <div class="social-media">
                 <a href="https://chrisdevs.bsky.social"><i class="fa-brands fa-bluesky"></i></a>
                 <a href="https://www.linkedin.com/in/james-robertson2002"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.reddit.com/u/that-one ITguu/s/rzaSuanwsx"><i class="fa-brands fa-reddit"></i></a>
+                <a href="https://www.reddit.com/u/that-one_ITguu/s/H2iSNcFjgF"><i class="fa-brands fa-reddit"></i></a>
             </div>
 
             <a href="https://docs.google.com/document/d/1PMoSe2bNeFD1VEN3WDCwDdUOLTCOyPiixkL_4rPqwvE/edit?usp=sharing" class="btn">View Resume</a>
@@ -241,7 +243,17 @@ document.getElementById("contact-form").addEventListener("submit", function(even
 </script>
 
 
+<style>
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 
 
     <!-- Footer Section -->
@@ -260,6 +272,25 @@ document.getElementById("contact-form").addEventListener("submit", function(even
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <!-- Custom JS -->
-    <script src="script.js"></script>
+    <script src="script.js"></script>    
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+    <div id="chat-circle" onclick="toggleChat()">💬</div>
+    <div id="chatbox-container">
+        <div id="chatbox-header">
+            <span>S.P.A.R.K 🤖</span>
+            <button id="close-chat" onclick="toggleChat()">❌</button>
+        </div>
+        <div id="chatbox">
+            <p class="bot-message">Hi! I’m S.P.A.R.K, your Smart Personal Assistant & Responsive Knowledgebot.<br><br>How can I assist you today?</p>
+        </div>
+        <div id="chat-input-container">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button id="send-button" onclick="handleUserInput()">
+                <i class="fas fa-paper-plane"></i> Send
+            </button>
+        </div>
+    </div>
+</div>
 </body>
 </html>
