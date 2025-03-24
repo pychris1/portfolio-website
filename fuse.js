@@ -15,16 +15,25 @@ document.addEventListener("DOMContentLoaded", function () {
         "portfolio": "Check out my GitHub:<br>🔗 GitHub: <a href='https://github.com/pychris1' target='_blank'>GitHub</a>"
     };
 
-    // Direct match for variations of "his socials"
-    function preprocessInput(input) {
-        const lowerInput = input.toLowerCase().trim();
+    // Direct match for variations of "his socials", "his experience", and "his resume"
+function preprocessInput(input) {
+    const lowerInput = input.toLowerCase().trim();
 
-        if (/his\s+socials|where.*his\s+socials|how.*his\s+socials|find.*his\s+socials/.test(lowerInput)) {
-            return "socials"; // Normalize all variations to "socials"
-        }
-
-        return lowerInput;
+    if (/his\s+socials|where.*his\s+socials|how.*his\s+socials|find.*his\s+socials/.test(lowerInput)) {
+        return "socials"; // Normalize all variations to "socials"
     }
+
+    if (/his\s+experience|what.*his\s+experience|tell.*his\s+experience/.test(lowerInput)) {
+        return "work experience"; // Normalize all variations to "work experience"
+    }
+
+    if (/his\s+resume|where.*his\s+resume|how.*his\s+resume|find.*his\s+resume/.test(lowerInput)) {
+        return "resume"; // Normalize all variations to "resume"
+    }
+
+    return lowerInput;
+}
+
 
     function getBestResponse(userInput) {
         const normalizedInput = preprocessInput(userInput);
