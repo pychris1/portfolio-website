@@ -24,11 +24,26 @@ function preprocessInput(input) {
     }
 
     if (/his\s+experience|what.*his\s+experience|tell.*his\s+experience/.test(lowerInput)) {
-        return "work experience"; // Normalize all variations to "work experience"
+        return "resume"; // Normalize all variations to "work experience"
     }
 
     if (/his\s+resume|where.*his\s+resume|how.*his\s+resume|find.*his\s+resume/.test(lowerInput)) {
         return "resume"; // Normalize all variations to "resume"
+    }
+    if (/his\s+certifications|where.*his\s+certifications|how.*his\s+certifications|find.*his\s+certifications/.test(lowerInput)) {
+        return "certifications"; // Normalize all variations to "resume"
+    }
+    if (/his\s+social media|where.*his\s+social media|how.*his\s+social media|find.*his\s+social media/.test(lowerInput)) {
+        return "socials"; // Normalize all variations to "resume"
+    }
+    if (/his\s+projects|where.*his\s+projects|how.*his\s+projects|find.*his\s+projects/.test(lowerInput)) {
+        return "projects"; // Normalize all variations to "resume"
+    }
+    if (/his\s+github|where.*his\s+github|how.*his\s+github|find.*his\s+github/.test(lowerInput)) {
+        return "projects"; // Normalize all variations to "resume"
+    }
+    if (/his\s+portfolio|where.*his\s+portfolio|how.*his\s+portfolio|find.*his\s+portfolio/.test(lowerInput)) {
+        return "projects"; // Normalize all variations to "resume"
     }
 
     return lowerInput;
