@@ -91,7 +91,7 @@ ScrollReveal().reveal('.home-contact p, .about-content', { origin: 'right', dist
 
 // Initialize Typed.js for multiple text animation
 const typed = new Typed('.multiple-text', {
-    strings: ['Programmer', 'Developer', 'Problem Solver'],
+    strings: ['Programmer', 'Developer', 'Engineer'],
     typeSpeed: 70,
     backSpeed: 70,
     backDelay: 1000,
