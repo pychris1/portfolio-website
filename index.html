@@ -21,6 +21,11 @@
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
         </nav>
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-mode-toggle">💡</button> <!-- Button for dark mode toggle -->
+
+</button>
+
     </header>
 
     <!-- Home Section -->
@@ -97,13 +102,14 @@
     <div class="portfolio-container">
         <!-- Project 1 -->
         <div class="portfolio-box">
-            <img src="keylog.jpeg" alt="">
+            <img src="keylog.jpeg" alt="KeyLogger Project">
             <div class="portfolio-layer">
                 <h4>KeyLogger</h4>
-                <p>This is a basic keylogger that can record provide the keystrokes into a text file.</p>
-                <a href="https://github.com/pychris1/Python-Keylogger.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <p>This is a basic keylogger that can record keystrokes into a text file.</p>
+                <a href="https://github.com/pychris1/Python-Keylogger.git" target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
+        
         
         <!-- Project 2 -->
         <div class="portfolio-box">
@@ -111,7 +117,7 @@
             <div class="portfolio-layer">
                 <h4>Pizza Ordering Bot</h4>
                 <p>A super smart and reliable pizza ordering assistant. This bot can order your favorite pizza to your doorstep in seconds!</p>
-                <a href="https://github.com/pychris1/-CIS110-Pizza-Ordering-Chatbot.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://github.com/pychris1/-CIS110-Pizza-Ordering-Chatbot.git"target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
         
@@ -121,7 +127,7 @@
             <div class="portfolio-layer">
                 <h4>Compound Interest Tool</h4>
                 <p>This is a tool for finding out the compound interest of your savings using key factors like, interest rate and length of savings</p>
-                <a href="https://github.com/pychris1/Intrest.Rate.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://github.com/pychris1/Intrest.Rate.git"target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
         
@@ -131,7 +137,7 @@
             <div class="portfolio-layer">
                 <h4>Dice Roller</h4>
                 <p>This is a simple dice roller. Nothing more nothing less!</p>
-                <a href="https://github.com/pychris1/Intrest.Rate.git"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://github.com/pychris1/My-Projects-in-Python/blob/main/Dice%20Roller.py"target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
         
@@ -141,7 +147,7 @@
             <div class="portfolio-layer">
                 <h4>Calculator</h4>
                 <p>This is a simple calculator that can take care of basic arithmetic problems.</p>
-                <a href="https://github.com/pychris1/My-Projects-in-Python/blob/main/Simple%20Calculator%20Function"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://github.com/pychris1/My-Projects-in-Python/blob/main/Simple%20Calculator%20Function"target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
         
@@ -151,7 +157,7 @@
             <div class="portfolio-layer">
                 <h4>Password Generator</h4>
                 <p>A Password Generator that creates them using special characters and can be defined by the user on how long it needs to be.</p>
-                <a href="https://github.com/pychris1/My-Projects-in-Python/blob/main/Password%20Generator.py"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://github.com/pychris1/My-Projects-in-Python/blob/main/Password%20Generator.py"target="_blank" class="repo-button">View Repository</a>
             </div>
         </div>
     </div>
@@ -263,8 +269,9 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         </div>
 
         <div class="footer-iconTop">
-            <a href="#home"><i class="fa-solid fa-angle-up"></i></a>
+            <a href="#home"></a>
         </div>
+        <button id="back-to-top">↑ Top</button>
     </footer>
 
     <!-- External JS Libraries -->
@@ -292,5 +299,29 @@ document.getElementById("contact-form").addEventListener("submit", function(even
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get the button element
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+        if (!darkModeToggle) return; // Prevent errors if button is missing
+
+        // Check for saved dark mode preference in localStorage
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Toggle dark mode on button click
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Save the preference in localStorage
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+    });
+</script>
+
+
+
 </body>
 </html>

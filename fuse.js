@@ -6,71 +6,59 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatboxContainer = document.getElementById("chatbox-container");
     const closeChat = document.getElementById("close-chat");
 
-    const responses = {
-        "work experience": "You can view my resume here: <a href='https://docs.google.com/document/d/1PMoSe2bNeFD1VEN3WDCwDdUOLTCOyPiixkL_4rPqwvE/edit?usp=sharing' target='_blank'>Download Resume</a>",
-        "resume": "You can view my resume here: <a href='https://docs.google.com/document/d/1PMoSe2bNeFD1VEN3WDCwDdUOLTCOyPiixkL_4rPqwvE/edit?usp=sharing' target='_blank'>Download Resume</a>",
-        "certifications": "Here are my certifications:<br>- AZ-900: Microsoft Azure Fundamentals<br>- Network+ (in progress)<br>- AWS Certified Cloud Practitioner<br>- TestOut Fundamentals IT Pro",
-        "socials": "Connect with me:<br>👾 Reddit: <a href='https://www.reddit.com/u/that-one_ITguu/s/H2iSNcFjgF' target='_blank'>Reddit</a><br>💼 LinkedIn: <a href='https://www.linkedin.com/in/james-robertson2002' target='_blank'>LinkedIn</a><br>🦋 BlueSky: <a href='https://bsky.app/profile/chrisdevs.bsky.social' target='_blank'>BlueSky</a>",
-        "projects": "Check out my GitHub:<br>🔗 GitHub: <a href='https://github.com/pychris1' target='_blank'>GitHub</a>",
-        "portfolio": "Check out my GitHub:<br>🔗 GitHub: <a href='https://github.com/pychris1' target='_blank'>GitHub</a>"
-    };
+    const responses = [
+        { key: "work experience", value: "You can view my resume here: <a href='https://docs.google.com/document/d/1PMoSe2bNeFD1VEN3WDCwDdUOLTCOyPiixkL_4rPqwvE/edit?usp=sharing' target='_blank'>Download Resume</a>" },
+        { key: "resume", value: "You can view my resume here: <a href='https://docs.google.com/document/d/1PMoSe2bNeFD1VEN3WDCwDdUOLTCOyPiixkL_4rPqwvE/edit?usp=sharing' target='_blank'>Download Resume</a>" },
+        { key: "certifications", value: "Here are my certifications:<br>- AZ-900: Microsoft Azure Fundamentals<br>- Network+ (in progress)<br>- AWS Certified Cloud Practitioner<br>- TestOut Fundamentals IT Pro" },
+        { key: "socials", value: "Connect with me:<br>👾 Reddit: <a href='https://www.reddit.com/u/that-one_ITguu/s/H2iSNcFjgF' target='_blank'>Reddit</a><br>💼 LinkedIn: <a href='https://www.linkedin.com/in/james-robertson2002' target='_blank'>LinkedIn</a><br>🦋 BlueSky: <a href='https://bsky.app/profile/chrisdevs.bsky.social' target='_blank'>BlueSky</a>" },
+        { key: "projects", value: "Check out my GitHub:<br>🔗 GitHub: <a href='https://github.com/pychris1' target='_blank'>GitHub</a>" },
+        { key: "portfolio", value: "Check out my GitHub:<br>🔗 GitHub: <a href='https://github.com/pychris1' target='_blank'>GitHub</a>" }
+    ];
 
-    // Direct match for variations of "his socials", "his experience", and "his resume"
-function preprocessInput(input) {
-    const lowerInput = input.toLowerCase().trim();
+    const fuse = new Fuse(responses, {
+        keys: ['key'],
+        threshold: 0.5, // Adjusting threshold for better matching
+        includeScore: true
+    });
 
-    if (/his\s+socials|where.*his\s+socials|how.*his\s+socials|find.*his\s+socials/.test(lowerInput)) {
-        return "socials"; // Normalize all variations to "socials"
-    }
-
-    if (/his\s+experience|what.*his\s+experience|tell.*his\s+experience/.test(lowerInput)) {
-        return "resume"; // Normalize all variations to "work experience"
+    function preprocessInput(input) {
+        return input.toLowerCase().trim();
     }
 
-    if (/his\s+resume|where.*his\s+resume|how.*his\s+resume|find.*his\s+resume/.test(lowerInput)) {
-        return "resume"; // Normalize all variations to "resume"
-    }
-    if (/his\s+certifications|where.*his\s+certifications|how.*his\s+certifications|find.*his\s+certifications/.test(lowerInput)) {
-        return "certifications"; // Normalize all variations to "resume"
-    }
-    if (/his\s+social media|where.*his\s+social media|how.*his\s+social media|find.*his\s+social media/.test(lowerInput)) {
-        return "socials"; // Normalize all variations to "resume"
-    }
-    if (/his\s+projects|where.*his\s+projects|how.*his\s+projects|find.*his\s+projects/.test(lowerInput)) {
-        return "projects"; // Normalize all variations to "resume"
-    }
-    if (/his\s+github|where.*his\s+github|how.*his\s+github|find.*his\s+github/.test(lowerInput)) {
-        return "projects"; // Normalize all variations to "resume"
-    }
-    if (/his\s+portfolio|where.*his\s+portfolio|how.*his\s+portfolio|find.*his\s+portfolio/.test(lowerInput)) {
-        return "projects"; // Normalize all variations to "resume"
-    }
+    function extractKeywords(input) {
+        const keywords = ["resume", "certifications", "socials", "projects", "portfolio", "work experience"];
 
-    return lowerInput;
-}
-
+        // Check if input contains any of the keywords
+        return keywords.find(keyword => input.includes(keyword)) || null;
+    }
 
     function getBestResponse(userInput) {
         const normalizedInput = preprocessInput(userInput);
+        console.log(`User input: ${normalizedInput}`); // Debug log
 
-        if (responses[normalizedInput]) {
-            return responses[normalizedInput];
+        const keywordMatch = extractKeywords(normalizedInput);
+
+        if (keywordMatch) {
+            console.log(`Keyword found: ${keywordMatch}`); // Debug log
+            const foundResponse = responses.find(r => r.key.includes(keywordMatch));
+            if (foundResponse) return foundResponse.value;
+        }
+
+        // Fuzzy search fallback
+        const results = fuse.search(normalizedInput);
+        console.log("Fuse.js results:", results); // Debug log
+
+        if (results.length > 0) {
+            return results[0].item.value;
         }
 
         return "I'm not sure about that. Try asking for 'resume', 'certifications', 'social media', or 'projects'.";
     }
 
-    function escapeHTML(str) {
-        return str.replace(/[&<>"']/g, function (match) {
-            const escapeMap = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" };
-            return escapeMap[match];
-        });
-    }
-
     function addMessage(message, isUser = false) {
         const messageElement = document.createElement("div");
         messageElement.classList.add(isUser ? "user-message" : "bot-message");
-        messageElement.innerHTML = isUser ? escapeHTML(message) : message;
+        messageElement.innerHTML = message;
         chatbox.appendChild(messageElement);
         chatbox.scrollTop = chatbox.scrollHeight;
     }
@@ -96,7 +84,7 @@ function preprocessInput(input) {
         setTimeout(() => {
             thinkingBubble.remove();
             addMessage(getBestResponse(text));
-        }, 1500);
+        }, 1000);
     }
 
     sendButton.addEventListener("click", handleUserInput);

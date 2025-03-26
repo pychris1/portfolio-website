@@ -334,7 +334,7 @@ span {
     align-items: center;
     width: 5rem;
     height: 5rem;
-    background: var(--text-color);
+    background: var(--bg-color);
     border-radius: 50%;
 }
 
@@ -754,4 +754,163 @@ body {
     transform: scale(0.95);
     background: #3e8e41;
 }
+
+/* Back to Top button styling */
+#back-to-top {
+    position: fixed; /* Keeps it fixed at the bottom */
+    bottom: 30px; /* Distance from the bottom */
+    right: 50%; /* Centers the button */
+    transform: translateX(50%); /* Adjusts for precise centering */
+    padding: 10px 20px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: none; /* Initially hidden */
+}
+
+
+#back-to-top:hover {
+    background: #45a049;
+}
+
+
+
+
+
+
+/* Dark Mode Toggle Button */
+#dark-mode-toggle {
+    position: fixed;
+    top: 65px;
+    right: 20px;
+    background-color: #536878;
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 25%;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 200;
+}
+
+#dark-mode-toggle:hover {
+    background-color: #4CAF50;
+}
+
+/* Animation when toggling between modes */
+#dark-mode-toggle:active {
+    transform: scale(0.95);
+}
+
+.footer-text{
+    font-size: 13px;
+    position: fixed;
+    bottom: 5px;
+    transform: translateX(10%); /* Adjusts for precise centering */
+
+}
+
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: fixed;
+    top: 35px;
+    right: 20px;
+    background: var(--main-color);
+    color: var(--bg-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    box-shadow: 0 0 5px var(--main-color);
+    transition: background 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background: var(--text-color);
+    color: var(--main-color);
+}
+
+/* Dark mode styles */
+.dark-mode {
+    --bg-color: #0d1117;
+    --snd-bg-color: #161b22;
+    --text-color: #c9d1d9;
+    --main-color: #58a6ff;
+}
+
+/* Adjusting elements to match dark mode better */
+.dark-mode body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.dark-mode .header {
+    background: var(--snd-bg-color);
+}
+
+.dark-mode .certs-container .certs-box,
+.dark-mode .portfolio-container .portfolio-box,
+.dark-mode #contact-form {
+    background: var(--snd-bg-color);
+    border-color: var(--main-color);
+}
+
+.dark-mode .navbar a:hover,
+.dark-mode .navbar a.active {
+    color: var(--main-color);
+}
+
+.dark-mode .btn {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--main-color);
+}
+
+.dark-mode .btn:hover {
+    box-shadow: none;
+    background: #4CAF50;
+    color: white;
+}
+
+.dark-mode .portfolio-box .portfolio-layer {
+    background: linear-gradient(rgba(0,0,0,0.6), var(--main-color));
+}
+
+
+
+.repo-button {
+    display: inline-block;
+    background: #4CAF50;
+    color: white;
+    padding: 30px 14px; /* Padding to make it larger but still rectangular */
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 4px; /* Subtle rounded corners */
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.repo-button:hover {
+    background: linear-gradient(135deg, #388E3C, #1B5E20); /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+/* Additional styles to match portfolio section */
+.portfolio-box .repo-button {
+    width: 100%; /* Makes the button take full width of its container */
+    margin-top: 10px;
+}
+
+
+
 

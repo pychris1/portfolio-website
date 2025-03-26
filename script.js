@@ -100,3 +100,47 @@ const typed = new Typed('.multiple-text', {
 
 
 
+// Show button when scrolling down
+window.addEventListener("scroll", function () {
+    let button = document.getElementById("back-to-top");
+    if (window.scrollY > 300) {
+        button.style.display = "block";
+    } else {
+        button.style.display = "none";
+    }
+});
+
+// Scroll to top when button is clicked
+document.getElementById("back-to-top").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+
+
+
+
+
+async function getBestResponse(userInputText) {
+    try {
+        const response = await fetch('http://localhost:3000/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ message: userInputText }),
+        });
+
+        if (!response.ok) {
+            console.error("Server responded with an error:", response.status);
+            return "Error: Unable to fetch response.";
+        }
+
+        const data = await response.json();
+        console.log("Response from server:", data);
+        return data.response || "I'm not sure about that.";
+    } catch (error) {
+        console.error("Fetch error:", error);
+        return "Error: Could not connect to server.";
+    }
+}
